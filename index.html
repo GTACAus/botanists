@@ -17,10 +17,11 @@
         }
         body { font-family: 'Figtree', sans-serif; margin: 0; padding: 20px; background-color: var(--eggshell); color: var(--onyx); }
         
-        .header-branding { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .gtac-logo { max-height: 50px; width: auto; }
+        .header-branding { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; }
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .gtac-logo, .sta-logo { max-height: 50px; width: auto; }
         
-        h1 { color: var(--cobalt-blue); border-bottom: 4px solid var(--sodium-flame); padding-bottom: 10px; }
+        h1 { color: var(--cobalt-blue); border-bottom: 4px solid var(--sodium-flame); padding-bottom: 10px; margin: 0; }
         
         .grid-container {
             display: grid;
@@ -66,30 +67,38 @@
 
     <div class="header-branding">
         <h1>Interview a Future Foods Expert</h1>
-        <img src="https://gtac.edu.au/wp-content/themes/gtac/assets/images/logo-2024.png" alt="GTAC Logo" class="gtac-logo">
+        <div class="logo-container">
+            <img src="https://images.squarespace-cdn.com/content/v1/5c6a2bfa11f7845bc7a99405/39b6699d-fa5f-4985-b1e2-218a18c680d6/Logo+%26+name+for+sig.png" alt="STA Logo" class="sta-logo">
+            <img src="https://gtac.edu.au/wp-content/themes/gtac/assets/images/logo-2024.png" alt="GTAC Logo" class="gtac-logo">
+        </div>
     </div>
 
     <div class="grid-container">
+        <!-- Card 1 -->
         <div class="card">
             <img src="hacker.png" alt="Genetic Engineer">
             <h3>Genetic Engineer</h3>
             <a href="https://placeholder">Chat now</a>
         </div>
+        <!-- Card 2 -->
         <div class="card">
             <img src="hydro.png" alt="Hydroponics Expert">
             <h3>Hydroponics & Aeroponics</h3>
             <a href="https://placeholder">Chat now</a>
         </div>
+        <!-- Card 3 -->
         <div class="card">
             <img src="food.png" alt="Food Scientist">
             <h3>Food Scientist</h3>
             <a href="https://placeholder">Chat now</a>
         </div>
+        <!-- Card 4 -->
         <div class="card">
             <img src="micro.png" alt="Microscopy Expert">
             <h3>Microscopy Expert</h3>
             <a href="https://placeholder">Chat now</a>
         </div>
+        <!-- Card 5 -->
         <div class="card">
             <img src="botan.png" alt="Astro Botanist">
             <h3>Astro Botanist</h3>
