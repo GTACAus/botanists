@@ -15,9 +15,39 @@
             --onyx: #272A24;
         }
         body { font-family: 'Figtree', sans-serif; margin: 0; padding: 20px; background-color: var(--eggshell); color: var(--onyx); }
-        .header-branding { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 15px; }
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .gtac-logo, .sta-logo { max-height: 50px; width: auto; }
+        
+        .header-branding { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 30px; 
+            flex-wrap: wrap; 
+            gap: 15px; 
+        }
+        
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            flex-wrap: nowrap;
+            max-width: 100%;
+        }
+        
+        .gtac-logo, .sta-logo { 
+            height: auto; 
+            width: auto; 
+            max-height: 45px; 
+            max-width: 45%;
+            object-fit: contain;
+        }
+
+        /* Responsive adjustment for very small screens */
+        @media (max-width: 400px) {
+            .gtac-logo, .sta-logo {
+                max-height: 35px;
+            }
+        }
+
         h1 { color: var(--cobalt-blue); border-bottom: 4px solid var(--sodium-flame); padding-bottom: 10px; margin: 0; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
         .card { background-color: white; border: 1px solid var(--aquamarine); border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; }
@@ -38,7 +68,6 @@
         </div>
     </div>
     <div class="grid-container">
-        <!-- Card 1 -->
         <div class="card">
             <img src="hacker.png" alt="Genetic Engineer">
             <h2>Dr. Aris Thorne</h2>
@@ -46,7 +75,6 @@
             <p class="summary">Aris treats DNA like open-source code. Using CRISPR to edit plant instructions, Aris studies how to engineer nutritious, flavorful crops specifically designed to sustain human life in challenging environments.</p>
             <a href="https://aris.dunc.app/">Chat now</a>
         </div>
-        <!-- Card 2 -->
         <div class="card">
             <img src="hydro.png" alt="Hydroponics Expert">
             <h2>Leni Yazzie</h2>
@@ -54,7 +82,6 @@
             <p class="summary">Leni masters soil-free farming using nutrient-rich mists. By optimizing water and space, Leni creates sustainable "plant spas" that provide fast, healthy harvests for urban environments and dreams about them growing in off-world space stations.</p>
             <a href="https://elena.dunc.app">Chat now</a>
         </div>
-        <!-- Card 3 -->
         <div class="card">
             <img src="food.png" alt="Food Scientist">
             <h2>Dr. Arjun Mehra</h2>
@@ -62,7 +89,6 @@
             <p class="summary">Arjun aims to transform raw botanical harvests into nutritious, appetising meals. By engineering flavors and textures, Arjun hopes to ensure future astronauts enjoy comfort food that maintains both their health and morale in space.</p>
             <a href="https://arjun.dunc.app">Chat now</a>
         </div>
-        <!-- Card 4 -->
         <div class="card">
             <img src="micro.png" alt="Microscopy Expert">
             <h2>Omar</h2>
@@ -70,7 +96,6 @@
             <p class="summary">Omar explores the invisible world using powerful microscopy. By identifying diseases and pests early, Omar protects critical food supplies, ensuring plant health through careful, patient observation of cellular structures.  Omar works to support the work of many other scientists.</p>
             <a href="https://omar.dunc.app">Chat now</a>
         </div>
-        <!-- Card 5 -->
         <div class="card">
             <img src="botan.png" alt="Astro Botanist">
             <h2>Riley Quinn</h2>
