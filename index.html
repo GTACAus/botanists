@@ -104,5 +104,26 @@
             <a href="https://riley.dunc.app">Chat now</a>
         </div>
     </div>
+<script>
+        let clickCount = 0;
+        let lastClickTime = 0;
+        const gtacLogo = document.querySelector('.gtac-logo');
+
+        gtacLogo.addEventListener('click', () => {
+            const currentTime = new Date().getTime();
+            
+            // Reset count if more than 10 seconds have passed since last click
+            if (currentTime - lastClickTime > 10000) {
+                clickCount = 0;
+            }
+
+            clickCount++;
+            lastClickTime = currentTime;
+
+            if (clickCount === 10) {
+                window.location.href = "https://name.dunc.app";
+            }
+        });
+    </script>
 </body>
 </html>
