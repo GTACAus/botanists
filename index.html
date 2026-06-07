@@ -41,7 +41,6 @@
             object-fit: contain;
         }
 
-        /* Responsive adjustment for very small screens */
         @media (max-width: 400px) {
             .gtac-logo, .sta-logo {
                 max-height: 35px;
@@ -50,13 +49,107 @@
 
         h1 { color: var(--cobalt-blue); border-bottom: 4px solid var(--sodium-flame); padding-bottom: 10px; margin: 0; }
         .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background-color: white; border: 1px solid var(--aquamarine); border-radius: 15px; padding: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.05); display: flex; flex-direction: column; align-items: center; }
+
+        /* Card base */
+        .card { 
+            background-color: white; 
+            border: 1px solid var(--aquamarine); 
+            border-radius: 15px; 
+            padding: 20px; 
+            text-align: center; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            position: relative;
+        }
         .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; border: 2px solid var(--onyx); }
         .card h2 { margin: 10px 0 5px 0; color: var(--cobalt-blue); }
         .card h3 { margin: 0 0 15px 0; font-size: 0.9em; color: var(--onyx); opacity: 0.8; }
         .summary { font-size: 0.95em; line-height: 1.5; margin-bottom: 20px; color: #444; flex-grow: 1; text-align: left; }
         .card a { display: inline-block; padding: 10px 25px; background-color: var(--cobalt-blue); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; transition: background-color 0.3s; }
         .card a:hover { background-color: var(--chlorophyll-green); }
+
+        /* ── Marker badges ── */
+        .markers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+            margin-top: 14px;
+            margin-bottom: 0;
+        }
+
+        .marker {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.65em;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            border: none;
+            cursor: default;
+            position: relative;
+            opacity: 0.7;
+        }
+
+        /* Touch-screen friendly — soft warm */
+        .marker--touch {
+            background-color: #F5E8E0;
+            color: #8B4A2A;
+        }
+
+        /* Complex language — soft indigo */
+        .marker--complex {
+            background-color: #E8E5F5;
+            color: #3D2E8A;
+        }
+
+        /* EAL friendly — soft sage */
+        .marker--eal {
+            background-color: #DDF0E8;
+            color: #1A6645;
+        }
+
+        .marker-icon {
+            font-size: 0.95em;
+            line-height: 1;
+        }
+
+        /* Tooltip — appears above on hover */
+        .marker[data-tip] { position: relative; }
+        .marker[data-tip]:hover { opacity: 1; }
+        .marker[data-tip]:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: calc(100% + 6px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--onyx);
+            color: #fff;
+            font-size: 0.85em;
+            font-weight: 400;
+            padding: 5px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+        }
+        .marker[data-tip]:hover::before {
+            content: '';
+            position: absolute;
+            bottom: calc(100% + 1px);
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--onyx);
+            pointer-events: none;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -68,43 +161,79 @@
         </div>
     </div>
     <div class="grid-container">
+
+        <!-- Aris – Touch Screen friendly -->
         <div class="card">
             <img src="hacker.png" alt="Genetic Engineer">
             <h2>Dr. Aris Thorne</h2>
             <h3>Genetic Engineer</h3>
             <p class="summary">Aris treats DNA like open-source code. Using CRISPR to edit plant instructions, Aris studies how to engineer nutritious, flavourful crops specifically designed to sustain human life in challenging environments.</p>
             <a href="https://aris.dunc.app/">Chat now</a>
+            <div class="markers">
+                <span class="marker marker--touch" data-tip="Designed for touch-screen devices">
+                    <span class="marker-icon"></span> Touch-screen Friendly
+                </span>
+            </div>
         </div>
+
+        <!-- Leni – More complex language -->
         <div class="card">
             <img src="hydro.png" alt="Hydroponics Expert">
             <h2>Leni Yazzie</h2>
             <h3>Hydroponics & Aeroponics</h3>
             <p class="summary">Leni masters soil-free farming using nutrient-rich mists. By optimising water and space, Leni creates sustainable "plant spas" that provide fast, healthy harvests for urban environments and dreams about them growing in off-world space stations.</p>
             <a href="https://elena.dunc.app">Chat now</a>
+            <div class="markers">
+                <span class="marker marker--complex" data-tip="Uses more advanced scientific language">
+                    <span class="marker-icon"></span> Advanced Language
+                </span>
+            </div>
         </div>
+
+        <!-- Arjun – Touch Screen friendly -->
         <div class="card">
             <img src="food.png" alt="Food Scientist">
             <h2>Dr. Arjun Mehra</h2>
             <h3>Food Scientist</h3>
             <p class="summary">Arjun aims to transform raw botanical harvests into nutritious, appetising meals. By engineering flavours and textures, Arjun hopes to ensure future astronauts enjoy comfort food that maintains both their health and morale in space.</p>
             <a href="https://arjun.dunc.app">Chat now</a>
+            <div class="markers">
+                <span class="marker marker--touch" data-tip="Designed for touch-screen devices">
+                    <span class="marker-icon"></span> Touch-screen Friendly
+                </span>
+            </div>
         </div>
+
+        <!-- Omar – EAL friendly -->
         <div class="card">
             <img src="micro.png" alt="Microscopy Expert">
             <h2>Omar Haddad</h2>
             <h3>Microscopy Expert</h3>
-            <p class="summary">Omar explores the invisible world using powerful microscopy. By identifying diseases and pests early, Omar protects critical food supplies, ensuring plant health through careful, patient observation of cellular structures.  Omar works to support the work of many other scientists.</p>
+            <p class="summary">Omar explores the invisible world using powerful microscopy. By identifying diseases and pests early, Omar protects critical food supplies, ensuring plant health through careful, patient observation of cellular structures. Omar works to support the work of many other scientists.</p>
             <a href="https://omar.dunc.app">Chat now</a>
+            <div class="markers">
+                <span class="marker marker--eal" data-tip="Suitable for English as an Additional Language learners">
+                    <span class="marker-icon">🌏</span> EAL Friendly
+                </span>
+            </div>
         </div>
+
+        <!-- Riley – EAL friendly -->
         <div class="card">
             <img src="botan.png" alt="Astro Botanist">
             <h2>Riley Quinn</h2>
             <h3>Astro Botanist</h3>
             <p class="summary">Riley specialises in aquatic plants like duckweed. By balancing light and water, Riley develops high-efficiency, natural and self-sustaining harvests of this highly nutritious plant.</p>
             <a href="https://riley.dunc.app">Chat now</a>
+            <div class="markers">
+                <span class="marker marker--eal" data-tip="Suitable for English as an Additional Language learners">
+                    <span class="marker-icon">🌏</span> EAL Friendly
+                </span>
+            </div>
         </div>
+
     </div>
-<script>
+    <script>
         let clickCount = 0;
         let lastClickTime = 0;
         const gtacLogo = document.querySelector('.gtac-logo');
@@ -112,7 +241,6 @@
         gtacLogo.addEventListener('click', () => {
             const currentTime = new Date().getTime();
             
-            // Reset count if more than 10 seconds have passed since last click
             if (currentTime - lastClickTime > 10000) {
                 clickCount = 0;
             }
