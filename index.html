@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -239,7 +240,8 @@
         </div>
 
     </div>
-    <script>
+<script>
+        // --- GTAC Logo Logic ---
         let clickCount = 0;
         let lastClickTime = 0;
         const gtacLogo = document.querySelector('.gtac-logo');
@@ -256,6 +258,49 @@
 
             if (clickCount === 10) {
                 window.location.href = "https://botanist.dunc.app/name";
+            }
+        });
+
+        // --- P4S (STA) Logo Logic ---
+        let staClickCount = 0;
+        let staLastClickTime = 0;
+        const staLogo = document.querySelector('.sta-logo');
+        const allMarkers = document.querySelectorAll('.markers');
+
+        // 1. Check state on load: Default to OFF unless explicitly saved as 'true'
+        const areMarkersVisible = localStorage.getItem('showMarkers') === 'true';
+        if (!areMarkersVisible) {
+            allMarkers.forEach(marker => marker.style.display = 'none');
+        }
+
+        // 2. Click listener for the STA logo
+        staLogo.addEventListener('click', () => {
+            const currentTime = new Date().getTime();
+
+            // Reset the counter if more than 3 seconds pass
+            if (currentTime - staLastClickTime > 3000) {
+                staClickCount = 0;
+            }
+
+            staClickCount++;
+            staLastClickTime = currentTime;
+
+            // 3. Trigger toggle on the 3rd click
+            if (staClickCount === 3) {
+                // Check current state (defaults to false if null)
+                const isCurrentlyVisible = localStorage.getItem('showMarkers') === 'true';
+                const newState = !isCurrentlyVisible; // Flip the state
+
+                // Update the DOM
+                allMarkers.forEach(marker => {
+                    marker.style.display = newState ? 'flex' : 'none';
+                });
+
+                // Save new state to localStorage
+                localStorage.setItem('showMarkers', newState);
+
+                // Reset click count
+                staClickCount = 0;
             }
         });
     </script>
